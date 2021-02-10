@@ -1,0 +1,185 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="CtrlFocusColor" Color="#FFF7FBC9" />
+
+    <LinearGradientBrush x:Key="MainGridBG" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" Opacity="0.5">
+        <GradientStop Color="#FF6A9CD3"/>
+        <GradientStop Color="#FFF5F7F9" Offset="1"/>
+    </LinearGradientBrush>
+
+
+    <Style x:Key="LblStyle" TargetType="Label">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style x:Key="LblDisplay" TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style x:Key="GridLeftAlign" TargetType="{x:Type Label}">
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+        <Setter Property="Control.VerticalAlignment" Value="Center" />
+        <Setter Property="Control.VerticalContentAlignment" Value="Center" />
+        <Setter Property="Control.FontSize" Value="12"/>
+        <Setter Property="Control.FontWeight" Value="Bold"/>
+    </Style>
+
+
+
+    <Style x:Key="CtrlFocus">
+        <Setter Property="Control.Background" Value="White"/>
+
+        <Style.Triggers>
+            <Trigger Property="Control.IsFocused" Value="True">
+                <Setter Property="Control.Background" Value="{StaticResource CtrlFocusColor}"/>
+            </Trigger>
+            <Trigger Property="Control.IsFocused" Value="False">
+                <Setter Property="Control.Background" Value="White"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CtrlLeftAlign" BasedOn="{StaticResource CtrlFocus}">
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+        <Setter Property="Control.Margin" Value="3" />
+        <Setter Property="Control.FontSize" Value="12" />
+    </Style>
+
+    <Style x:Key="CtrlLeftAlignTXT" BasedOn="{StaticResource CtrlFocus}">
+        <Setter Property="Control.HorizontalAlignment" Value="Left" />
+        <Setter Property="Control.Margin" Value="3" />
+        <Setter Property="Control.FontSize" Value="13" />
+        <Style.Triggers>
+            <Trigger Property="Control.IsFocused" Value="True">
+                <Setter Property="Control.Foreground" Value="Blue" />
+            </Trigger>
+            <Trigger Property="Control.IsFocused" Value="False">
+                <Setter Property="Control.Background" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="DGCHeaderStyle" TargetType="{x:Type DataGridColumnHeader}" >
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="DGCElementStyleCenter" TargetType="{x:Type TextBlock}" >
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Padding" Value="5" />
+    </Style>
+
+    <Style x:Key="DGCElementStyleRight" TargetType="{x:Type TextBlock}" >
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Padding" Value="5" />
+    </Style>
+
+    <Style x:Key="DGCElementStyleLeft" TargetType="{x:Type TextBlock}" >
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="10,0,0,0" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Padding" Value="5" />
+    </Style>
+
+    <Style x:Key="DGCStyle" TargetType="{x:Type DataGridCell}" >
+        <Setter Property="BorderThickness" Value="0"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF3399FF"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MyGlowBtn" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Button" Margin="0" Height="{TemplateBinding Height}" VerticalAlignment="Top" Cursor="Hand" CornerRadius="6.5">
+                        <Grid>
+                            <Rectangle x:Name="Baselayer" StrokeThickness="0" Fill="#FF32CCFF" RadiusX="5" RadiusY="5"/>
+                            <Rectangle x:Name="Highlightlayer" StrokeThickness="0" RadiusX="5" RadiusY="5" Opacity="0">
+                                <Rectangle.Fill>
+                                    <RadialGradientBrush Center="0.505,0.911" GradientOrigin="0.505,0.911" RadiusY="0.763" RadiusX="0.763">
+                                        <GradientStop Color="#FF0130FF"/>
+                                        <GradientStop Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle x:Name="Glasslayer" StrokeThickness="0" RadiusX="5" RadiusY="5" Opacity="0.5">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,0.085" StartPoint="0.5,1">
+                                        <GradientStop Color="#00000000" Offset="0"/>
+                                        <GradientStop Color="White" Offset="0.95"/>
+                                        <GradientStop Color="#A9A9A9A9" Offset="0.593"/>
+                                        <GradientStop Color="#BEBEBEBE" Offset="0.63"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <ContentPresenter x:Name="lbl" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="1" TargetName="Highlightlayer" />
+                            <Setter Property="Opacity" Value="0.3" TargetName="Glasslayer" />
+                            <Setter Property="BorderBrush" Value="Black" TargetName="Button" />
+                            <Setter Property="BorderThickness" Value="0.5,0,0,0.5" TargetName="Button" />
+                            <Setter Property="TextBlock.Foreground" TargetName="lbl" Value="DarkBlue" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="TextBlock.Foreground" TargetName="lbl" Value="Gray" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="BorderBrush" Value="White" TargetName="Button" />
+                            <Setter Property="BorderThickness" Value="0.5,0.5,0,0" TargetName="Button" />
+                            <Setter Property="Opacity" Value="0.5" TargetName="Highlightlayer" />
+                            <Setter Property="TextBlock.Foreground" TargetName="lbl" Value="#FF7E7E61" />
+                            <Setter TargetName="Highlightlayer" Property="Fill">
+                                <Setter.Value>
+                                    <RadialGradientBrush Center="0.505,0.911" GradientOrigin="0.505,0.911" RadiusY="0.763" RadiusX="0.763">
+                                        <GradientStop Offset="1"/>
+                                        <GradientStop Color="White" />
+                                    </RadialGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

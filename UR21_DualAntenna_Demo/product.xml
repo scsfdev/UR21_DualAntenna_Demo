@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<product>
+  <tag>
+    <ptag>4901305410623</ptag>
+    <desc>Japanese Green Tea (500 g)</desc>
+    <price>20.50</price>
+  </tag>
+  <tag>
+    <ptag>4901305400020</ptag>
+    <desc>Burmese Green Tea (250 g)</desc>
+    <price>10.00</price>
+  </tag>
+  <tag>
+    <ptag>402676055029</ptag>
+    <desc>Ball Pen</desc>
+    <price>2.50</price>
+  </tag>
+  <tag>
+    <ptag>4902870762131</ptag>
+    <desc>Tea Bag</desc>
+    <price>2.00</price>
+  </tag>
+  <tag>
+    <ptag>4006381333634</ptag>
+    <desc>Staples (5mm)</desc>
+    <price>3.45</price>
+  </tag>
+  <tag>
+    <ptag>6925236560682</ptag>
+    <desc>Highlighter (Purple color)</desc>
+    <price>1.75</price>
+  </tag>
+  <tag>
+    <ptag>000000000000000000000008</ptag>
+    <desc>AA battery</desc>
+    <price>4.50</price>
+  </tag>
+  <tag>
+    <ptag>000000000000000000000001</ptag>
+    <desc>AAA battery</desc>
+    <price>3.75</price>
+  </tag>
+  <tag>
+    <ptag>4964661240206977</ptag>
+    <desc>UHC Glue stick</desc>
+    <price>0.50</price>
+  </tag>
+  <tag>
+    <ptag>4571323300017</ptag>
+    <desc>Double sided tape (1m)</desc>
+    <price>2.75</price>
+  </tag>
+  <tag>
+    <ptag>00C05905F15A</ptag>
+    <desc>Toy (A1)</desc>
+    <price>5.75</price>
+  </tag>
+  <tag>
+    <ptag>F1RDPH01600150</ptag>
+    <desc>Soft Toy (B2)</desc>
+    <price>10.30</price>
+  </tag>
+  <tag>
+    <ptag>496444601171</ptag>
+    <desc>RC Car (A2)</desc>
+    <price>95.95</price>
+  </tag>
+  <tag>
+    <ptag>M2900202512D</ptag>
+    <desc>RC Car (B2)</desc>
+    <price>40.55</price>
+  </tag>
+  <tag>
+    <ptag>4662005170700010</ptag>
+    <desc>Exercise Book (A4)</desc>
+    <price>2.45</price>
+  </tag>
+  <tag>
+    <ptag>5496900136900005</ptag>
+    <desc>Exercise Book (A6)</desc>
+    <price>2.00</price>
+  </tag>
+  <tag>
+    <ptag>4963202251601190</ptag>
+    <desc>Magazine (C1)</desc>
+    <price>4.50</price>
+  </tag>
+  <tag>
+    <ptag>EPNG930BBEGWW</ptag>
+    <desc>Magazine (C2)</desc>
+    <price>3.50</price>
+  </tag>
+  <tag>
+    <ptag>RF7H80AJV3DCIS</ptag>
+    <desc>Man's Business Shirt</desc>
+    <price>25.50</price>
+  </tag>
+  <tag>
+    <ptag>GH4402685A</ptag>
+    <desc>Man's T-Shirt</desc>
+    <price>10.50</price>
+  </tag>
+  <tag>
+    <ptag>R37HA4PAMF1HM3</ptag>
+    <desc>Lady's Business Blouse</desc>
+    <price>50.55</price>
+  </tag>
+  <tag>
+    <ptag>2976255035300000</ptag>
+    <desc>Lady's T-Shirt</desc>
+    <price>20.45</price>
+  </tag>
+</product>

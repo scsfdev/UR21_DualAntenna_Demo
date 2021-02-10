@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UR21_DualAntenna_Demo.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ANTENNA" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DUAL</Value>
+    </Setting>
+    <Setting Name="DUPLICATE" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SOUND" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="VOUCHER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">voucher.xml</Value>
+    </Setting>
+    <Setting Name="PRODUCT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">product.xml</Value>
+    </Setting>
+    <Setting Name="COM1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="COM2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
