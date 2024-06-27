@@ -9,6 +9,7 @@
         Height="700" MinHeight="600"
         Width="1000" MinWidth="1000"
         Title="{Binding Title}"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         Icon="Resources/tags.ico"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
@@ -36,17 +37,17 @@
         </Grid.RowDefinitions>
 
         <!--Title-->
-        <Label Grid.Row="0" FontSize="30" Content="{Binding Title}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" 
-        		VerticalAlignment="Center" FontWeight="Bold" FontFamily="Comic Sans MS" Margin="17,-1,25,0" Grid.ColumnSpan="3" Height="52" >
-            <Label.Foreground>
+        <Label Grid.Row="0" FontSize="30" Content="{Binding Title}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" 
+        		VerticalAlignment="Top" FontWeight="Bold" FontFamily="Comic Sans MS"  Height="52" Grid.RowSpan="2" >
+            <!--<Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF5EB2EC" Offset="0.31"/>
                     <GradientStop Color="#FFE6F7F6" Offset="0.63"/>
                 </LinearGradientBrush>
-            </Label.Foreground>
-            <Label.Effect>
+            </Label.Foreground>-->
+            <!--<Label.Effect>
                 <DropShadowEffect BlurRadius="5" RenderingBias="Quality" ShadowDepth="1" Color="#FF1092E7"/>
-            </Label.Effect>
+            </Label.Effect>-->
         </Label>
 
 
@@ -64,7 +65,7 @@
         <!--POS Grid-->
         <Grid Grid.Row="1" Visibility="{Binding GridPos, Converter={StaticResource B2V}}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="1.3*"/>
                 <ColumnDefinition Width="1.3*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -86,6 +87,9 @@
                         Command="{Binding CmdPosAction}" CommandParameter="CONFIG"/>
             </WrapPanel>
 
+            <Label Grid.Row="2" Grid.Column="0" Content="Total: " HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="8,0,0,0" />
+            <Label Grid.Row="2" Grid.Column="0" Content="{Binding ElementName=dgItems,Path=Items.Count}"
+                   FontWeight="DemiBold" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0" />
             <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="150,0,0,0">
                 <Button Content="RESET" Style="{StaticResource MyGlowBtn}" Height="50" FontSize="20" 
                         Command="{Binding CmdPosAction}" CommandParameter="RESET" />
@@ -95,10 +99,10 @@
 
 
             <!--Data Grid-->
-            <DataGrid Grid.Row="3" Grid.Column="0" ItemsSource="{Binding TagList}" Margin="10" 
+            <DataGrid Grid.Row="3" Grid.Column="0" ItemsSource="{Binding TagList}" Margin="10"  x:Name="dgItems"
                   RowHeaderWidth="0" AutoGenerateColumns="False" IsEnabled="True" HorizontalAlignment="Stretch"
                   CanUserResizeRows="False" CanUserReorderColumns="False" CanUserAddRows="False" AlternatingRowBackground="AliceBlue" 
-                  AlternationCount="2" SelectionMode="Single" SelectionUnit="FullRow" CellStyle="{StaticResource DGCStyle}" >
+                  AlternationCount="2" SelectionMode="Single" SelectionUnit="FullRow" CellStyle="{StaticResource DGCStyle}" FontSize="20" FontFamily="Calibri" >
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Header="NO" MinWidth="50" Binding="{Binding No}" Width="50"
                                     HeaderStyle="{StaticResource DGCHeaderStyle}" ElementStyle="{StaticResource DGCElementStyleCenter}"/>
@@ -133,9 +137,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Row="1" Grid.Column="0" Content="Date:" Style="{StaticResource LblStyle}" />
-                <Label Grid.Row="3" Grid.Column="0" Content="Grand Total:" Style="{StaticResource LblStyle}" Foreground="Red" FontSize="20"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Total:" Style="{StaticResource LblStyle}" Foreground="Red" />
                 <Label Grid.Row="5" Grid.Column="0" Content="Voucher Value:" Style="{StaticResource LblStyle}" />
-                <Label Grid.Row="7" Grid.Column="0" Content="After Voucher:" Style="{StaticResource LblStyle}" Foreground="Red" FontSize="20"/>
+                <Label Grid.Row="7" Grid.Column="0" Content="Grant Total:" Style="{StaticResource LblStyle}" Foreground="Red" FontSize="20"/>
                 <Label Grid.Row="9" Grid.Column="1" Content="Payment" Style="{StaticResource LblDisplay}" />
 
                 <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource CtrlLeftAlignTXT}" IsReadOnly="True" Width="200" IsTabStop="False"
@@ -245,8 +249,8 @@
                     </LinearGradientBrush>
                 </Button.BorderBrush>
             </Button>
-            
-            
+
+
             <!-- COM Port 2 -->
             <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource LblStyle}" Content="COM Port 2:" Height="26" Margin="0,3,0,2" />
             <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource CtrlLeftAlignTXT}" HorizontalAlignment="Left"

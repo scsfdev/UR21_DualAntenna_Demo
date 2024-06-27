@@ -14,6 +14,8 @@ namespace UR21_DualAntenna_Demo.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        private readonly IDataService _dataService;
+
         //DispatcherTimer dComTimer;
         DispatcherTimer dMsgTimer;
         DispatcherTimer dComTimer;
@@ -240,9 +242,23 @@ namespace UR21_DualAntenna_Demo.ViewModel
         #endregion
 
 
-        public MainViewModel()
+        
+        public MainViewModel(IDataService dataService)
         {
-            Title = "UR21 Dual Antenna Demo";
+            _dataService = dataService;
+            _dataService.GetData(
+                (item, error) =>
+                {
+                    if (error != null)
+                    {
+                        // Report error here
+                        return;
+                    }
+
+                    
+                });
+
+            Title = "RFID Self-Checkout Demo";
             Version = General.gGetVersion();
 
             GridConfig = false;
@@ -251,7 +267,7 @@ namespace UR21_DualAntenna_Demo.ViewModel
             Messenger.Default.Register<string>(this, MsgType.MAIN_VM, ShowMsg);
 
 
-            DefaultMsg = _title + " Created by Tin Maung Htay. Version: " + Version;
+            DefaultMsg = _title + " By DIAS. Version: " + Version;
 
             CmdConfigAction = new RelayCommand<object>(ActionConfig);
             CmdPosAction = new RelayCommand<object>(ActionPos);
@@ -276,7 +292,7 @@ namespace UR21_DualAntenna_Demo.ViewModel
             AllowSound = Properties.Settings.Default.SOUND;
 
             // Load dummy data.
-            Load_XML_Dummy();
+            Load_Csv_Dummy();
 
             // TODO :Debug usage only.
             // Test_debug();
@@ -343,6 +359,52 @@ namespace UR21_DualAntenna_Demo.ViewModel
             Load_Config();
         }
 
+        private void Load_Csv_Dummy()
+        {
+            // Load Products.
+            if (lstPs == null || lstPs.Count <= 0)
+            {
+                Result mR = new CsvHelper().Read_Csv_Product();
+
+                if (mR.bOk == true)
+                    lstPs = (List<MyProduct>)mR.sObj;
+                else
+                {
+                    if (mR.bOk == false)
+                    {
+                        StatusMsg = "Warning: " + mR.sResult;
+                        Messenger.Default.Send(MyConst.WARNING + Environment.NewLine + mR.sResult, MsgType.MAIN_V);
+                    }
+                    else
+                    {
+                        StatusMsg = mR.sResult.Replace(MyConst.ERROR + Environment.NewLine, "Error: ");
+                        Messenger.Default.Send(mR.sResult + Environment.NewLine + Environment.NewLine + mR.sErrMsg, MsgType.MAIN_V);
+                    }
+                }
+            }
+
+            // Load Vouchers.
+            if (lstVs == null || lstVs.Count <= 0)
+            {
+                Result mR = new XmlHelper().ReadXML_Voucher();
+
+                if (mR.bOk == true)
+                    lstVs = (List<MyVoucher>)mR.sObj;
+                else
+                {
+                    if (mR.bOk == false)
+                    {
+                        StatusMsg = "Warning: " + mR.sResult;
+                        Messenger.Default.Send(MyConst.WARNING + Environment.NewLine + mR.sResult, MsgType.MAIN_V);
+                    }
+                    else
+                    {
+                        StatusMsg = mR.sResult.Replace(MyConst.ERROR + Environment.NewLine, "Error: ");
+                        Messenger.Default.Send(mR.sResult + Environment.NewLine + Environment.NewLine + mR.sErrMsg, MsgType.MAIN_V);
+                    }
+                }
+            }
+        }
 
         private void Load_XML_Dummy()
         {
@@ -395,10 +457,10 @@ namespace UR21_DualAntenna_Demo.ViewModel
         {
             RfCmdText = MyConst.SCAN;
             IsReady = false;
-            dComTimer.Start();
+           // dComTimer.Start();
             Selected_Antenna = Properties.Settings.Default.ANTENNA;
-            ComPort1 = Properties.Settings.Default.COM1;
-
+           // ComPort1 = Properties.Settings.Default.COM1;
+            ComPort1 = Convert.ToInt32(Properties.Settings.Default.ANTI_SCANNER_COM);
             Reset_Pos();
         }
 
@@ -815,7 +877,7 @@ namespace UR21_DualAntenna_Demo.ViewModel
 
 
                         MyProduct myP = (from p in lstPs
-                                         where p.PTag == t.Uii
+                                         where p.Epc == t.Uii
                                          select p).SingleOrDefault();
 
                         if (myP != null)
@@ -824,7 +886,13 @@ namespace UR21_DualAntenna_Demo.ViewModel
                             t.Price = myP.Price;
                         }
                         else
-                            t.Desc = t.Uii;
+                        {
+                            // Do not add it.
+                            return;
+                            // If want to add unknown tag, uncomment below line.
+                            // t.Desc = t.Uii;
+
+                        }                           
 
 
                         decimal dTotal = t.Price * t.Qty;

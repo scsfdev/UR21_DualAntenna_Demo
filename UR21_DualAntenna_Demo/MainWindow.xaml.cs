@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using UR21_DualAntenna_Demo.ViewModel;
 using UR21_DualAntenna_Demo.Model;
+using System;
 
 namespace UR21_DualAntenna_Demo
 {
@@ -44,10 +45,18 @@ namespace UR21_DualAntenna_Demo
             else
                 mboxImg = MessageBoxImage.Information;
 
-            Dispatcher.Invoke(() =>
+            try
             {
-                MessageBox.Show(this, strMsg, this.Title, MessageBoxButton.OK, mboxImg);
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(this, strMsg, this.Title, MessageBoxButton.OK, mboxImg);
+                });
+               
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }           
         }
 
         private void Button_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)

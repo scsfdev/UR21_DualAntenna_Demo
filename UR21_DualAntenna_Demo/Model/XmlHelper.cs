@@ -43,10 +43,61 @@ namespace UR21_DualAntenna_Demo.Model
     class MyProduct
     {
         public string PTag { get; set; }
+        public string Epc { get; set; }
         public string Desc{ get; set; }
         public decimal Price { get; set; }
     }
 
+    class CsvHelper
+    {
+        public Result Read_Csv_Product()
+        {
+            Result fr = new Result();
+
+            string dummyFile = Properties.Settings.Default.PRODUCT;
+
+            try
+            {
+                if (!File.Exists(dummyFile))
+                {
+                    // Create default xml file.
+                    fr.sResult = "Dummy Product file is missing!";
+                    fr.bOk = null;
+                }
+                else
+                {
+                    string[] rawData = File.ReadAllLines(dummyFile);
+                    List<MyProduct> myProducts = new List<MyProduct>();
+
+                    foreach (var raw in rawData)
+                    {
+                        if (raw.ToUpper().StartsWith("BARCODE,EPC"))
+                            continue;
+
+                        string[] splitData = raw.Split(new string[] { "," }, StringSplitOptions.None);
+                        MyProduct p = new MyProduct() {
+                            PTag = splitData[0].Trim(),
+                            Epc = splitData[1].Trim(),
+                            Desc = splitData[3].Trim() + " " + splitData[5].Trim() + " " + splitData[8].Trim() + " " + splitData[7].Trim(),
+                            Price = Convert.ToDecimal(splitData[9].Trim())
+                        };
+
+                        myProducts.Add(p);
+                    }
+
+                    fr.sObj = myProducts;
+                    fr.bOk = true;
+                }
+            }
+            catch (Exception e)
+            {
+                fr.sResult = MyConst.ERROR + Environment.NewLine + "Fail to read " + dummyFile + " file.";
+                fr.sErrMsg = ErrCode.Err_ReadXML_Product + ": " + e.Message;
+            }
+
+            return fr;
+        }
+    }
 
     class XmlHelper
     {

@@ -12,7 +12,7 @@ namespace UR21_DualAntenna_Demo.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -73,7 +73,7 @@ namespace UR21_DualAntenna_Demo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("product.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("dummydata.csv")]
         public string PRODUCT {
             get {
                 return ((string)(this["PRODUCT"]));
@@ -85,7 +85,7 @@ namespace UR21_DualAntenna_Demo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public int COM1 {
             get {
                 return ((int)(this["COM1"]));
@@ -104,6 +104,18 @@ namespace UR21_DualAntenna_Demo.Properties {
             }
             set {
                 this["COM2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        public string ANTI_SCANNER_COM {
+            get {
+                return ((string)(this["ANTI_SCANNER_COM"]));
+            }
+            set {
+                this["ANTI_SCANNER_COM"] = value;
             }
         }
     }

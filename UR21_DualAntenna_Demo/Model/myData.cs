@@ -31,6 +31,7 @@ namespace UR21_DualAntenna_Demo.Model
         internal const string xValue = "value";
 
         internal const string xTag = "tag";
+        internal const string xEpc = "epc";
         internal const string xPTag = "ptag";
         internal const string xDesc = "desc";
         internal const string xPrice = "price";
