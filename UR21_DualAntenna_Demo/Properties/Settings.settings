@@ -18,13 +18,13 @@
       <Value Profile="(Default)">dummydata.csv</Value>
     </Setting>
     <Setting Name="COM1" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="COM2" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ANTI_SCANNER_COM" Type="System.String" Scope="User">
-      <Value Profile="(Default)">12</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

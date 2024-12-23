@@ -85,7 +85,7 @@ namespace UR21_DualAntenna_Demo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int COM1 {
             get {
                 return ((int)(this["COM1"]));
@@ -109,7 +109,7 @@ namespace UR21_DualAntenna_Demo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public string ANTI_SCANNER_COM {
             get {
                 return ((string)(this["ANTI_SCANNER_COM"]));
